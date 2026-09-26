@@ -262,7 +262,7 @@ export default function RegisterForm({ formData, handleChange, handleSubmit, cur
               style={{ cursor: 'pointer' }}
               className="w-2/3 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl transition-all cursor-pointer"
             >
-              Submit Registration 
+              Registration 
             </button>
           </div>
         </div>
