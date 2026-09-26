@@ -3,7 +3,7 @@ import Header from './components/Header';
 import RegisterForm from './components/RegisterForm';
 import SuccessScreen from './components/SuccessScreen';
 import Footer from './components/Footer';
-import { FaWhatsapp, FaHeart } from 'react-icons/fa';
+import { FaWhatsapp} from 'react-icons/fa';
 
 function App() {
   const initialFormState = {
