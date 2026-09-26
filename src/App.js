@@ -3,7 +3,7 @@ import Header from './components/Header';
 import RegisterForm from './components/RegisterForm';
 import SuccessScreen from './components/SuccessScreen';
 import Footer from './components/Footer';
-import { FaWhatsapp} from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 
 function App() {
   const initialFormState = {
@@ -12,9 +12,14 @@ function App() {
     phone: '',
     whatsappBotPin: '',
     hasStudentActivity: '',
+    previousChapter: '',
+    previousPosition: '',
+    whyJoin: '',
+    whatToGain: '',
     howYouKnowUs: '',
     firstCommittee: '',
     secondCommittee: '',
+    whyThisCommittee: '',
     university: '',
     faculty: '',
     department: '',
@@ -25,6 +30,8 @@ function App() {
 
   const [formData, setFormData] = useState(initialFormState);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [showSupportBox, setShowSupportBox] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -32,6 +39,9 @@ function App() {
       [e.target.name]: e.target.value
     });
   };
+
+  const nextStep = () => setCurrentStep((prev) => prev + 1);
+  const prevStep = () => setCurrentStep((prev) => prev - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +51,7 @@ function App() {
 
   const handleReset = () => {
     setFormData(initialFormState);
+    setCurrentStep(1);
     setIsSubmitted(false);
   };
 
@@ -58,6 +69,9 @@ function App() {
               formData={formData}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
+              currentStep={currentStep}
+              nextStep={nextStep}
+              prevStep={prevStep}
             />
           </>
         ) : (
@@ -68,31 +82,27 @@ function App() {
       <Footer />
 
       <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3 pointer-events-auto">
-
-        <div className="bg-slate-900/95 backdrop-blur-md border border-green-500/30 text-white p-4 rounded-2xl shadow-2xl max-w-xs text-xs space-y-1 relative">
-          
-          <p className="text-slate-300">
-            Having a <a href="https://wa.me/201069842136" target="_blank" rel="noopener noreferrer" className="text-green-400 font-semibold hover:underline">technical problem</a>?
-          </p>
-
-          <p className="text-slate-300">Contact me on WhatsApp:</p>
-
-          <a href="https://wa.me/201069842136" target="_blank" rel="noopener noreferrer"
-            className="text-green-400 font-bold hover:underline block pt-0.5">+201069842136</a>
-
-        </div>
+        {showSupportBox && (
+          <div className="bg-slate-900/95 backdrop-blur-md border border-green-500/30 text-white p-4 rounded-2xl shadow-2xl max-w-xs text-xs space-y-1 relative animate-fadeIn">
+            <p className="text-slate-300">
+              Having a <a href="https://wa.me/201069842136" target="_blank" rel="noopener noreferrer" className="text-green-400 font-semibold hover:underline">technical problem</a>?
+            </p>
+            <p className="text-slate-300">Contact me on WhatsApp:</p>
+            <a href="https://wa.me/201069842136" target="_blank" rel="noopener noreferrer"
+              className="text-green-400 font-bold hover:underline block pt-0.5">+201069842136</a>
+          </div>
+        )}
 
         <div className="relative flex items-center justify-center">
-
           <div className="absolute w-12 h-12 bg-green-500 rounded-full animate-ping opacity-30"></div>
-
-          <a href="https://wa.me/201069842136" target="_blank" rel="noopener noreferrer"
-             className="w-14 h-14 bg-gradient-to-tr from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-green-500/40 border border-green-400/30 transition-all duration-300 transform hover:scale-105"
-            title="Contact on WhatsApp">
-              <FaWhatsapp className="w-7 h-7" /></a>
-       
+          <button
+            onClick={() => setShowSupportBox(!showSupportBox)}
+            className="w-14 h-14 bg-gradient-to-tr from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-green-500/40 border border-green-400/30 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            title="Toggle Support"
+          >
+            <FaWhatsapp className="w-7 h-7" />
+          </button>
         </div>
-
       </div>
 
     </div>
