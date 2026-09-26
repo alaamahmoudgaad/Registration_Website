@@ -1,4 +1,4 @@
-import { FaWhatsapp, FaHeart } from 'react-icons/fa';
+import { FaWhatsapp} from 'react-icons/fa';
 
 export default function Footer() {
   const whatsappNumber = "201069842136"; 

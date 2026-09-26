@@ -1,4 +1,4 @@
-import { FaLink ,FaFacebook , FaLinkedin ,FaUser, FaWhatsapp, FaLightbulb, FaUsers, FaGraduationCap } from 'react-icons/fa';
+import { FaLink ,FaFacebook , FaLinkedin ,FaUser, FaLightbulb, FaUsers, FaGraduationCap } from 'react-icons/fa';
 export default function RegisterForm({ formData, handleChange, handleSubmit }) {
   const inputClass = "w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition-all placeholder:text-slate-400 shadow-inner";
   const labelClass = "block text-xs font-bold text-blue-900 uppercase tracking-wider mb-2 text-left";
